@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>Minha Lista de Compras</h2>
+
+    <input type="text" id="itemProduto" placeholder="Digite o nome do produto">
+    
+    <button id="btnAdicionar">Adicionar Produto</button>
+
+    <ul id="listaProdutos"></ul>
+
+    <script>
+        const inputItem = document.getElementById('itemProduto');
+        const botao = document.getElementById('btnAdicionar');
+        const lista = document.getElementById('listaProdutos');
+
+        botao.addEventListener('click', function() {
+            const textoProduto = inputItem.value;
+
+            const novoItem = document.createElement('li');
+            
+            novoItem.textContent = textoProduto;
+            
+            lista.appendChild(novoItem);
+            
+            inputItem.value = "";
+            
+            inputItem.focus();
+            
+        });
+    </script>
+
+</body>
+</html>

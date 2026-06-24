@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 10</title>
+</head>
+<body>
+
+    <button id="btnAtivar">Ativar Teclado</button>
+    <button id="btnDesativar">Desativar Teclado</button>
+    <h1 id="contador">0</h1>
+
+    <script>
+        const btnAtivar = document.getElementById('btnAtivar');
+        const btnDesativar = document.getElementById('btnDesativar');
+        const contador = document.getElementById('contador');
+
+        let totalTeclas = 0;
+        let tecladoAtivo = false;
+
+        function contarTecla() {
+            totalTeclas++;
+            contador.textContent = totalTeclas;
+        }
+
+        btnAtivar.addEventListener('click', () => {
+            if (!tecladoAtivo) {
+                window.addEventListener('keydown', contarTecla);
+                tecladoAtivo = true;
+            }
+        });
+
+        btnDesativar.addEventListener('click', () => {
+            if (tecladoAtivo) {
+                window.removeEventListener('keydown', contarTecla);
+                tecladoAtivo = false;
+            }
+        });
+    </script>
+
+</body>
+</html>

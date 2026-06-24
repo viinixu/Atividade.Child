@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="btnAdicionar">Adicionar Mensagem</button>
+    <button id="btnRemover">Remover Mensagem</button>
+
+    <div id="containerMensagens"></div>
+
+    <script>
+        const botao = document.getElementById('btnAdicionar');
+        const botaoR = document.getElementById('btnRemover');
+        const container = document.getElementById('containerMensagens');
+
+        botao.addEventListener('click', function () {
+
+            const novoParagrafo = document.createElement('p');
+
+            novoParagrafo.textContent = "Bem-vindo ao sistema!";
+
+            container.appendChild(novoParagrafo);
+
+        });
+
+        botaoR.addEventListener('click', function () {
+
+            if (container.lastElementChild) {
+                container.removeChild(container.lastElementChild);
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>

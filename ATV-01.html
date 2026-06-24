@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="btnAdicionar">Adicionar Mensagem</button>
+
+    <div id="containerMensagens"></div>
+
+    <script>
+        const botao = document.getElementById('btnAdicionar');
+        const container = document.getElementById('containerMensagens');
+
+        botao.addEventListener('click', function() {
+            
+            const novoParagrafo = document.createElement('p');
+            
+            novoParagrafo.textContent = "Bem-vindo ao sistema!";
+            
+            container.appendChild(novoParagrafo);
+            
+        });
+    </script>
+
+</body>
+</html>

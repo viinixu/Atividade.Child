@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>Lista de Alunos</h2>
+
+    <input type="text" id="aluno" placeholder="Digite o nome do aluno">
+    
+    <button id="btnAdicionar">Cadastrar Aluno</button>
+
+    <ul id="listaAluno"></ul>
+
+    <script>
+        const inputItem = document.getElementById('aluno');
+        const botao = document.getElementById('btnAdicionar');
+        const lista = document.getElementById('listaAluno');
+
+        botao.addEventListener('click', function() {
+            const textoAluno = inputItem.value;
+
+            const novoItem = document.createElement('li');
+            
+            novoItem.textContent = textoAluno;
+            
+            lista.appendChild(novoItem);
+            
+            inputItem.value = "";
+            
+            inputItem.focus();
+            
+        });
+        
+    </script>
+
+</body>
+</html>
