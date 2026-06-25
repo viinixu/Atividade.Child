@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 20 – Cadastro com Limite</title>
+</head>
+<body>
+
+    <button id="ativar">Ativar Cadastro</button>
+    <button id="desativar">Desativar Cadastro</button>
+
+    <br><br>
+
+    <input type="text" id="nomeInput" placeholder="Digite um nome">
+    <button id="btnCadastrar">Cadastrar</button>
+
+    <p id="mensagem" style="color: red; font-weight: bold;"></p>
+    
+    <h3>Nomes Cadastrados:</h3>
+    <ul id="listaNomes"></ul>
+
+    <script>
+        const ativar = document.getElementById('ativar');
+        const desativar = document.getElementById('desativar');
+        const nomeInput = document.getElementById('nomeInput');
+        const btnCadastrar = document.getElementById('btnCadastrar');
+        const mensagem = document.getElementById('mensagem');
+        const listaNomes = document.getElementById('listaNomes');
+
+        let cadastros = [];
+
+        function realizarCadastro() {
+            const nome = nomeInput.value.trim();
+            
+            if (nome === "") return;
+
+            cadastros.push(nome);
+            nomeInput.value = "";
+
+            listaNomes.innerHTML = "";
+            for (let i = 0; i < cadastros.length; i++) {
+                const li = document.createElement('li');
+                li.textContent = cadastros[i];
+                listaNomes.appendChild(li);
+            }
+
+            if (cadastros.length >= 5) {
+                mensagem.textContent = "Limite de cadastros atingido.";
+                btnCadastrar.removeEventListener('click', realizarCadastro);
+            }
+        }
+
+        ativar.addEventListener('click', () => {
+            if (cadastros.length < 5) {
+                btnCadastrar.addEventListener('click', realizarCadastro);
+            }
+        });
+
+        desativar.addEventListener('click', () => {
+            btnCadastrar.removeEventListener('click', realizarCadastro);
+        });
+    </script>
+
+</body>
+</html>
