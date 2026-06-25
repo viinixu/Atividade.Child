@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #titulo {
+            padding: 15px;
+            font-size: 20px;
+            background-color: #ff9bd2;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btnAtivar">Ativar Evento</button>
+    <button id="btnDesativar">Remover Evento</button>
+
+    <p id="titulo">Clique aqui e veja</p>
+
+    <script>
+        const btnAtivar = document.getElementById('btnAtivar');
+        const btnDesativar = document.getElementById('btnDesativar');
+        const titulo = document.getElementById('titulo');
+
+        function alterar() {
+            titulo.style.backgroundColor = "purple";
+            titulo.style.color = "white"
+        }
+
+        btnAtivar.addEventListener('click', () => {
+            titulo.addEventListener('click', alterar);
+            console.log("Evento ativado.");
+        });
+
+        btnDesativar.addEventListener('click', () => {
+            titulo.removeEventListener('click', alterar);
+            titulo.textContent = "Você desativou a alteração de cor!";
+            console.log("Evento desativado.");
+        });
+    </script>
+
+</body>
+</html>

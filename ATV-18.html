@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 18 – Sistema de Vidas</title>
+</head>
+<body>
+
+    <button id="btnReiniciar">Iniciar/Reiniciar Jogo</button>
+    <br><br>
+    <button id="btnDano">Receber Dano</button>
+
+    <p>Vidas: <span id="vidasTela">5</span></p>
+    <p id="mensagem" style="color: red; font-weight: bold;"></p>
+
+    <script>
+        const btnReiniciar = document.getElementById('btnReiniciar');
+        const btnDano = document.getElementById('btnDano');
+        const vidasTela = document.getElementById('vidasTela');
+        const mensagem = document.getElementById('mensagem');
+
+        let vidas = 5;
+
+        function perderVida() {
+            vidas--;
+            vidasTela.textContent = vidas;
+
+            if (vidas > 0) {
+                mensagem.textContent = "";
+            } else {
+                mensagem.textContent = "Game Over";
+                btnDano.removeEventListener('click', perderVida);
+            }
+        }
+
+        btnReiniciar.addEventListener('click', () => {
+            vidas = 5;
+            vidasTela.textContent = vidas;
+            mensagem.textContent = "";
+            btnDano.addEventListener('click', perderVida);
+        });
+    </script>
+
+</body>
+</html>

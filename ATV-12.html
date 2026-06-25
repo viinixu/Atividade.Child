@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 12 – Lista de Cliques</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+        .controles {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #botaoPrincipal {
+            width: 300px;
+            height: 100px;
+            font-size: 24px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        #botaoPrincipal:hover {
+            background-color: #0056b3;
+        }
+        .container-lista {
+            margin-top: 20px;
+            width: 300px;
+            max-height: 200px;
+            overflow-y: auto; /* Cria barra de rolagem se a lista crescer muito */
+            border: 1px solid #ddd;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        ul {
+            list-style-type: square;
+            margin: 0;
+            padding-left: 20px;
+        }
+        li {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controles">
+        <button id="ativarRegistro" style="background-color: #28a745; color: white;">Ativar Registro</button>
+        <button id="desativarRegistro" style="background-color: #dc3545; color: white;">Desativar Registro</button>
+    </div>
+
+    <button id="botaoPrincipal">Botão Principal</button>
+
+    <div class="container-lista">
+        <ul id="listaCliques"></ul>
+    </div>
+
+    <script>
+        const ativarBtn = document.getElementById('ativarRegistro');
+        const desativarBtn = document.getElementById('desativarRegistro');
+        const botaoPrincipal = document.getElementById('botaoPrincipal');
+        const listaCliques = document.getElementById('listaCliques');
+
+        function adicionarNaLista() {
+            const novoItem = document.createElement('li');
+            novoItem.textContent = "Clique";
+            listaCliques.appendChild(novoItem);
+        }
+
+        ativarBtn.addEventListener('click', () => {
+            botaoPrincipal.addEventListener('click', adicionarNaLista);
+            console.log('Registro de cliques ativado.');
+        });
+
+        desativarBtn.addEventListener('click', () => {
+            botaoPrincipal.removeEventListener('click', adicionarNaLista);
+            console.log('Registro de cliques desativado.');
+        });
+    </script>
+</body>
+</html>

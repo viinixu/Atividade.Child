@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 13 – Caixa de Texto</title>
+</head>
+<body>
+
+    <button id="ativar">Ativar</button>
+    <button id="desativar">Desativar</button>
+
+    <br><br>
+
+    <input type="text" id="campo" placeholder="Digite aqui...">
+
+    <p>Visualização: <span id="visualizacao"></span></p>
+
+    <script>
+        const campo = document.getElementById('campo');
+        const visualizacao = document.getElementById('visualizacao');
+        const ativar = document.getElementById('ativar');
+        const desativar = document.getElementById('desativar');
+
+        function atualizarTexto() {
+            visualizacao.textContent = campo.value;
+        }
+
+        ativar.addEventListener('click', () => {
+            campo.addEventListener('input', atualizarTexto);
+        });
+
+        desativar.addEventListener('click', () => {
+            campo.removeEventListener('input', atualizarTexto);
+        });
+    </script>
+
+</body>
+</html>

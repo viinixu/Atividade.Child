@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 19 – Contagem Regressiva</title>
+</head>
+<body>
+
+    <button id="ativar">Ativar Contagem</button>
+    <br><br>
+    <button id="btnReduzir">Reduzir</button>
+
+    <p>Contador: <span id="contadorTela">20</span></p>
+    <p id="mensagem" style="color: blue; font-weight: bold;"></p>
+
+    <script>
+        const activar = document.getElementById('ativar');
+        const btnReduzir = document.getElementById('btnReduzir');
+        const contadorTela = document.getElementById('contadorTela');
+        const mensagem = document.getElementById('mensagem');
+
+        let contador = 20;
+
+        function reduzirContagem() {
+            contador--;
+            contadorTela.textContent = contador;
+
+            if (contador > 0) {
+                mensagem.textContent = "";
+            } else {
+                mensagem.textContent = "Fim da Contagem";
+                btnReduzir.removeEventListener('click', reduzirContagem);
+            }
+        }
+
+        activar.addEventListener('click', () => {
+            contador = 20;
+            contadorTela.textContent = contador;
+            mensagem.textContent = "";
+            btnReduzir.addEventListener('click', reduzirContagem);
+        });
+    </script>
+
+</body>
+</html>

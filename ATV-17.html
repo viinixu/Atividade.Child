@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 17</title>
+</head>
+<body>
+
+    <button id="ativar">Ativar</button>
+    <button id="desativar">Desativar</button>
+
+    <br><br>
+
+    <button id="btnGerar">Gerar Número</button>
+
+    <p>Número: <span id="numTela">-</span></p>
+    <p>Status: <span id="statusTela">-</span></p>
+
+    <script>
+        const ativar = document.getElementById('ativar');
+        const desativar = document.getElementById('desativar');
+        const btnGerar = document.getElementById('btnGerar');
+        const numTela = document.getElementById('numTela');
+        const statusTela = document.getElementById('statusTela');
+
+        function gerenciarNumeros() {
+            const numeroAleatorio = Math.floor(Math.random() * 20) + 1;
+            numTela.textContent = numeroAleatorio;
+
+            if (numeroAleatorio % 2 === 0) {
+                statusTela.textContent = "Número Aceito";
+            } else {
+                statusTela.textContent = "Número Ignorado";
+            }
+        }
+
+        ativar.addEventListener('click', () => {
+            btnGerar.addEventListener('click', gerenciarNumeros);
+        });
+
+        desativar.addEventListener('click', () => {
+            btnGerar.removeEventListener('click', gerenciarNumeros);
+        });
+    </script>
+
+</body>
+</html>

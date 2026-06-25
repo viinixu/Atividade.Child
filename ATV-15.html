@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 15 – Mostrar Hora</title>
+</head>
+<body>
+
+    <button id="ativar">Ativar Hora</button>
+    <button id="desativar">Desativar Hora</button>
+
+    <br><br>
+
+    <button id="btnHora">Clique para ver a hora</button>
+
+    <p>Hora atual: <span id="exibicao">--:--:--</span></p>
+
+    <script>
+        const ativar = document.getElementById('ativar');
+        const desativar = document.getElementById('desativar');
+        const btnHora = document.getElementById('btnHora');
+        const exibicao = document.getElementById('exibicao');
+
+        function mostrarHoraAtual() {
+            const agora = new Date();
+            exibicao.textContent = agora.toLocaleTimeString('pt-BR');
+        }
+
+        ativar.addEventListener('click', () => {
+            btnHora.addEventListener('click', mostrarHoraAtual);
+        });
+
+        desativar.addEventListener('click', () => {
+            btnHora.removeEventListener('click', mostrarHoraAtual);
+        });
+    </script>
+
+</body>
+</html>

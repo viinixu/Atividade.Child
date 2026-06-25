@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 14 – Mover Personagem</title>
+    <style>
+        /* Container para limitar a área onde o personagem se move */
+        #cenario {
+            width: 400px;
+            height: 400px;
+            border: 2px dashed black;
+            position: relative;
+            background-color: #f0f0f0;
+            margin-top: 10px;
+        }
+        /* Quadrado que representa o personagem */
+        #personagem {
+            width: 400px; /* Será alterado via JS para 40px no início para caber no cenário */
+            width: 40px;
+            height: 40px;
+            background-color: red;
+            position: absolute;
+            top: 180px;
+            left: 180px;
+        }
+    </style>
+</head>
+<body>
+    <button id="ativar">Ativar Movimento</button>
+    <button id="desativar">Desativar Movimento</button>
+
+    <div id="cenario">
+        <div id="personagem"></div>
+    </div>
+
+    <script>
+        const personagem = document.getElementById('personagem');
+        const ativar = document.getElementById('ativar');
+        const desativar = document.getElementById('desativar');
+
+        let x = 180;
+        let y = 180;
+        const velocidade = 10;
+
+        function mover(evento) {
+            if (evento.key === "ArrowUp") {
+                y -= velocidade;
+            } else if (evento.key === "ArrowDown") {
+                y += velocidade;
+            } else if (evento.key === "ArrowLeft") {
+                x -= velocidade;
+            } else if (evento.key === "ArrowRight") {
+                x += velocidade;
+            }
+
+            personagem.style.top = y + "px";
+            personagem.style.left = x + "px";
+        }
+
+        ativar.addEventListener('click', () => {
+            window.addEventListener('keydown', mover);
+        });
+
+        desativar.addEventListener('click', () => {
+            window.removeEventListener('keydown', mover);
+        });
+    </script>
+
+</body>
+</html>
